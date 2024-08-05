@@ -3,6 +3,7 @@
 namespace Developerawam\GenerateMigration;
 
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
@@ -16,7 +17,7 @@ class GenerateMigration
         // use try catch to handle exception and if catch rollback migration
         try {
 
-            $table_name = lcfirst(str_replace(' ', '', ucwords($table)));
+            $table_name = str_replace(' ', '', ucwords($table));
 
             // call artisan migrate
             Artisan::call('migrate');
