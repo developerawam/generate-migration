@@ -11,17 +11,19 @@ class GenerateMigration
 {
     public static function create(string $table, array $payload){
 
-        self::checkTableExists('post');
+        self::checkTableExists($table);
 
         // use try catch to handle exception and if catch rollback migration
         try {
+
+            $table_name = lcfirst(str_replace(' ', '', ucwords($table)));
 
             // call artisan migrate
             Artisan::call('migrate');
 
             // call artisan make model and migration
             Artisan::call('make:model', [
-                'name' => 'Post',
+                'name' => $table_name,
                 '--migration' => true
             ]);
 
@@ -52,18 +54,18 @@ class GenerateMigration
     }
 
     private static function addColumnsToMigration($filePath, $columns) {
-        // Baca konten file migrasi
+        // read content file migrasi
         $migrationContent = File::get($filePath);
 
-        // Temukan posisi untuk menambahkan kolom setelah `$table->id();`
+        // find position to add column after `$table->id();`
         $idPos = strpos($migrationContent, '$table->id();');
         $timestampsPos = strpos($migrationContent, '$table->timestamps();');
 
-        // Siapkan string kolom untuk ditambahkan
+        // prepare string for add column
         $columnsString = '';
         foreach ($columns as $column) {
             $columnType = $column['type'];
-            $columnName = $column['name'];
+            $columnName = strtolower(str_replace(' ', '_', $column['name']));
             $default = isset($column['default']) ? "->default('{$column['default']}')" : '';
 
             switch ($columnType) {
@@ -113,12 +115,12 @@ class GenerateMigration
             }
         }
 
-        // Sisipkan kolom setelah `$table->id();` dan sebelum `$table->timestamps();`
+        // insert column after `$table->id();` and before `$table->timestamps();`
         $beforeTimestamps = substr($migrationContent, 0, $timestampsPos);
         $afterTimestamps = substr($migrationContent, $timestampsPos);
         $migrationContent = $beforeTimestamps . $columnsString . $afterTimestamps;
 
-        // Tulis kembali ke file migrasi
+        // write back to migration file
         File::put($filePath, $migrationContent);
     }
 
