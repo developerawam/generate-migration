@@ -116,26 +116,6 @@ Use the `GenerateMigration` class to create a migration with the desired table n
 composer test
 ```
 
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email info@developerawam.com instead of using the issue tracker.
-
-## Credits
-
--   [Developer Awam](https://github.com/restu-lomboe)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
 ## Laravel Package Boilerplate
 
 This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
