@@ -1,4 +1,4 @@
-# Laravel Auto Generate Model and Migration
+# Laravel Auto Generate Model, Migration, and Table
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/developerawam/generate-migration.svg?style=flat-square)](https://packagist.org/packages/developerawam/generate-migration)
 [![Total Downloads](https://img.shields.io/packagist/dt/developerawam/generate-migration.svg?style=flat-square)](https://packagist.org/packages/developerawam/generate-migration)
