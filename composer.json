@@ -1,6 +1,6 @@
 {
     "name": "developerawam/generate-migration",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "This package automatically generates migration files for your Laravel application. With this feature, you can quickly create database structures without writing SQL code manually. Simply specify the model you want to create, and this package will handle the rest, streamlining development and minimizing human errors.",
     "keywords": [
         "developerawam",
