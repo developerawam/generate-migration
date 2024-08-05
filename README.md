@@ -31,71 +31,71 @@ Use the `GenerateMigration` class to create a migration with the desired table n
 
     // table column example
     $table_colom = [
-        {
-            "name": "name",
-            "type": "string",
-            "default": "default_name"
-        },
-        {
-            "name": "description",
-            "type": "text",
-            "default": "default_description"
-        },
-        {
-            "name": "age",
-            "type": "integer",
-            "default": 25
-        },
-        {
-            "name": "views",
-            "type": "bigInteger",
-            "default": 0
-        },
-        {
-            "name": "price",
-            "type": "decimal",
-            "precision": 8,
-            "scale": 2,
-            "default": 0.00
-        },
-        {
-            "name": "rating",
-            "type": "float",
-            "precision": 8,
-            "scale": 2,
-            "default": 0.00
-        },
-        {
-            "name": "birthdate",
-            "type": "date",
-            "default": "2000-01-01"
-        },
-        {
-            "name": "appointment_time",
-            "type": "time",
-            "default": "12:00:00"
-        },
-        {
-            "name": "created_at",
-            "type": "timestamp",
-            "default": "CURRENT_TIMESTAMP"
-        },
-        {
-            "name": "is_active",
-            "type": "boolean",
-            "default": true
-        },
-        {
-            "name": "status",
-            "type": "enum",
-            "values": ["pending", "approved", "rejected"],
-            "default": "pending"
-        },
-        {
-            "name": "settings",
-            "type": "json",
-            "default": "{\"theme\": \"dark\", \"notifications\": true}"
-        }
+        [
+            "name"      => "name",
+            "type"      => "string",
+            "default"   => null
+        ],
+        [
+            "name"      => "description",
+            "type"      => "text",
+            "default"   => null
+        ],
+        [
+            "name"      => "age",
+            "type"      => "integer",
+            "default"   => 20
+        ],
+        [
+            "name"      => "views",
+            "type"      => "bigInteger",
+            "default"   => 0
+        ],
+        [
+            "name"      => "price",
+            "type"      => "decimal",
+            "precision" => 8,
+            "scale"     => 2,
+            "default"   => 0.00
+        ],
+        [
+            "name"      => "rating",
+            "type"      => "float",
+            "precision" => 8,
+            "scale"     => 2,
+            "default"   => 0.00
+        ],
+        [
+            "name"      => "birthdate",
+            "type"      => "date",
+            "default"   => "2000-01-01"
+        ],
+        [
+            "name"      => "appointment_time",
+            "type"      => "time",
+            "default"   => "12:00:00"
+        ],
+        [
+            "name"      => "created_at",
+            "type"      => "timestamp",
+            "default"   => "CURRENT_TIMESTAMP"
+        ],
+        [
+            "name"      => "is_active",
+            "type"      => "boolean",
+            "default"   => true
+        ],
+        [
+            "name"      => "status",
+            "type"      => "enum",
+            "values"    => ["pending", "approved", "rejected"],
+            "default"   => "pending"
+        ],
+        [
+            "name"      => "settings",
+            "type"      => "json",
+            "default"   => "{\"theme\": \"dark\", \"notifications\": true}"
+        ]
     ];
 
     // table_name must be string

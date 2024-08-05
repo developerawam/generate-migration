@@ -48,6 +48,24 @@ class GenerateMigration
         } catch (Exception $e) {
             // rollback migration
             Artisan::call('migrate:rollback');
+
+            // Get the latest model and migration files
+            $modelFile = app_path('Models/' . Str::studly($table) . '.php');
+            $migrationFile = collect(File::files(database_path('migrations')))
+                ->sortByDesc(function ($file) {
+                    return $file->getCTime();
+                })
+                ->first();
+
+            // Delete model and migration files if they exist
+            if (File::exists($modelFile)) {
+                File::delete($modelFile);
+            }
+
+            if ($migrationFile && File::exists($migrationFile->getPathname())) {
+                File::delete($migrationFile->getPathname());
+            }
+
             throw new Exception($e);
         }
 
@@ -70,47 +88,47 @@ class GenerateMigration
 
             switch ($columnType) {
                 case 'string':
-                    $columnsString .= "\$table->string('$columnName')$default;\n";
+                    $columnsString .= "\$table->string('$columnName')$default;\n            ";
                     break;
                 case 'text':
-                    $columnsString .= "\$table->text('$columnName')$default;\n";
+                    $columnsString .= "\$table->text('$columnName')$default;\n            ";
                     break;
                 case 'integer':
-                    $columnsString .= "\$table->integer('$columnName')$default;\n";
+                    $columnsString .= "\$table->integer('$columnName')$default;\n            ";
                     break;
                 case 'bigInteger':
-                    $columnsString .= "\$table->bigInteger('$columnName')$default;\n";
+                    $columnsString .= "\$table->bigInteger('$columnName')$default;\n            ";
                     break;
                 case 'decimal':
                     $precision = isset($column['precision']) ? $column['precision'] : 8;
                     $scale = isset($column['scale']) ? $column['scale'] : 2;
-                    $columnsString .= "\$table->decimal('$columnName', $precision, $scale)$default;\n";
+                    $columnsString .= "\$table->decimal('$columnName', $precision, $scale)$default;\n            ";
                     break;
                 case 'float':
                     $precision = isset($column['precision']) ? $column['precision'] : 8;
                     $scale = isset($column['scale']) ? $column['scale'] : 2;
-                    $columnsString .= "\$table->float('$columnName', $precision, $scale)$default;\n";
+                    $columnsString .= "\$table->float('$columnName', $precision, $scale)$default;\n            ";
                     break;
                 case 'date':
-                    $columnsString .= "\$table->date('$columnName')$default;\n";
+                    $columnsString .= "\$table->date('$columnName')$default;\n            ";
                     break;
                 case 'time':
-                    $columnsString .= "\$table->time('$columnName')$default;\n";
+                    $columnsString .= "\$table->time('$columnName')$default;\n            ";
                     break;
                 case 'timestamp':
                     $default = ($default === 'CURRENT_TIMESTAMP') ? "->useCurrent()" : $default;
-                    $columnsString .= "\$table->timestamp('$columnName')$default;\n";
+                    $columnsString .= "\$table->timestamp('$columnName')$default;\n            ";
                     break;
                 case 'boolean':
                     $default = ($default === 'true') ? "->default(true)" : "->default(false)";
-                    $columnsString .= "\$table->boolean('$columnName')$default;\n";
+                    $columnsString .= "\$table->boolean('$columnName')$default;\n            ";
                     break;
                 case 'enum':
                     $values = implode("', '", $column['values']);
-                    $columnsString .= "\$table->enum('$columnName', ['$values'])$default;\n";
+                    $columnsString .= "\$table->enum('$columnName', ['$values'])$default;\n            ";
                     break;
                 case 'json':
-                    $columnsString .= "\$table->json('$columnName')$default;\n";
+                    $columnsString .= "\$table->json('$columnName')$default;\n            ";
                     break;
             }
         }
