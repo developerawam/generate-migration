@@ -34,7 +34,7 @@ class GenerateMigrationServiceProvider extends ServiceProvider
             // Publishing assets
             
             $this->publishes([
-                __DIR__.'/public/css' => public_path('vendor/generate-migration'),
+                __DIR__.'/../src/resources/css' => public_path('vendor/generate-migration'),
             ], 'assets');
 
             // Publishing the translation files.
