@@ -31,10 +31,11 @@ class GenerateMigrationServiceProvider extends ServiceProvider
                 __DIR__.'/../src/resources/views' => resource_path('views/vendor/generate-migration'),
             ], 'views');
 
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/generate-migration'),
-            ], 'assets');*/
+            // Publishing assets
+            
+            $this->publishes([
+                __DIR__.'/../src/resources/css' => public_path('vendor/generate-migration'),
+            ], 'assets');
 
             // Publishing the translation files.
             /*$this->publishes([
