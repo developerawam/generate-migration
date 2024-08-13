@@ -8,7 +8,8 @@ This package automatically create and generate migration files for your Laravel 
 ## Requirements
 
 - Laravel 11
-- PHP 8.0
+- PHP ^8.0
+- TailwindCSS ^3.4
 
 ## Installation
 
