@@ -15,15 +15,21 @@ class GenerateMigrationServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
 
+        // Load package views
+        $this->loadViewsFrom(__DIR__.'/../src/resources/views', 'generate-ui');
+
+        // load package routes
+        $this->loadRoutesFrom(__DIR__.'/../src/routes/web.php');
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('generate-migration.php'),
             ], 'config');
 
             // Publishing the views.
-            // $this->publishes([
-            //     __DIR__.'/../src/views' => resource_path('views/vendor/generate-migration'),
-            // ], 'views');
+            $this->publishes([
+                __DIR__.'/../src/resources/views' => resource_path('views/vendor/generate-migration'),
+            ], 'views');
 
             // Publishing assets.
             /*$this->publishes([
