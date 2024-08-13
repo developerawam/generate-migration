@@ -19,13 +19,12 @@ You can install the package via composer:
 composer require developerawam/generate-migration
 ```
 
-## (Optional) UI For Generate
-After the package has been installed if you want to custom ui-generate you can can publish the views using the Artisan command:
+### Publish the Assets
+Run the following Artisan command to publish the assets to your Laravel application's public directory:
 
 ```bash
-php artisan vendor:publish --tag=views
+php artisan vendor:publish --tag=assets
 ```
-
 
 ## Usage
 
