@@ -1,9 +1,9 @@
-# Laravel Auto Generate Model, Migration, and Table
+# Laravel Auto Create Model, Migration, and Table
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/developerawam/generate-migration.svg?style=flat-square)](https://packagist.org/packages/developerawam/generate-migration)
 [![Total Downloads](https://img.shields.io/packagist/dt/developerawam/generate-migration.svg?style=flat-square)](https://packagist.org/packages/developerawam/generate-migration)
 
-This package automatically generates migration files for your Laravel application. With this feature, you can quickly create database structures without writing SQL code manually. Simply specify the model you want to create, and this package will handle the rest, streamlining development and minimizing human errors.
+This package automatically create and generate migration files for your Laravel application. With this feature, you can quickly create database structures without writing SQL code manually. Simply specify the model you want to create, and this package will handle the rest, streamlining development and minimizing human errors.
 
 ## Requirements
 
@@ -18,7 +18,25 @@ You can install the package via composer:
 composer require developerawam/generate-migration
 ```
 
+## (Optional) UI For Generate
+After the package has been installed if you want to custom ui-generate you can can publish the views using the Artisan command:
+
+```bash
+php artisan vendor:publish --tag=views
+```
+
+
 ## Usage
+
+After installation, you can access the user interface to auto create generate models, migrations, and tables by visiting the following URL in your browser:
+
+```bash
+/generate-migration/generate-ui
+```
+
+This screenshot showcases the user interface provided by the package. The interface allows users to easily generate models, migrations, and database tables in a Laravel project through a simple and intuitive UI.
+
+![UI Screenshot](https://i.ibb.co.com/426SDbn/Screenshot-2024-08-13-082731.png)
 
 Use the `GenerateMigration` class to create a migration with the desired table name and columns. The example code below demonstrates how to create a migration for a `post` table with columns:
 
